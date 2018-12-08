@@ -1,10 +1,30 @@
 
-<div id="demo"></div>
+<div id="sf18"></div>
 <script>
-document.getElementById("demo").innerHTML = get('orgId');
+document.getElementById("demo").innerHTML = convert15To18(get('orgId'));
 function get(name){
    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
       return decodeURIComponent(name[1]);
+}
+function convert15To18(orgId15){
+	if(orgId15== ""){
+	return "Please provide 15 chars org id";
+	}
+	var y=orgId15.split("\r").join("").split("\n");
+	var z=new Array();
+	for(var x=0;x<y.length;x++)
+	{
+	if(y[x].length==15){var s="";
+	for(var i=0;i<3; i++){ 
+		var f=0;
+		for(var j=0;j<5;j++){
+			var c=y[x].charAt(i*5+j);
+			if(c>="A" && c<="Z")f+=1<<j; }
+			s+="ABCDEFGHIJKLMNOPQRSTUVWXYZ012345".charAt(f);
+			}
+			z.push(y[x]+s);}
+			else{ return "Error : "+y[x]+" has not a length of 15 characters - "+y[x].length;}}
+			return z;
 }
 </script>
 
