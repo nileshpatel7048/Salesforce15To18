@@ -1,7 +1,7 @@
 
 <div id="sf18"></div>
 <script>
-document.getElementById("demo").innerHTML = convert15To18(get('orgId'));
+document.getElementById("sf18").innerHTML = convert15To18(get('orgId'));
 function get(name){
    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
       return decodeURIComponent(name[1]);
